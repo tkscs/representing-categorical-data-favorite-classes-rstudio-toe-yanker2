@@ -14,23 +14,92 @@ url = "https://docs.google.com/spreadsheets/d/1JmVLUjtSwcuxApJXFFYu7sbre7s0pHjOf
 df = read_sheet(url) |> 
   clean_names()
 ```
+
 # 1. Make a barplot of `what_is_your_favorite_core_class`
 
 ```{r}
-df |> 
-  ggplot()
+df |>
+  ggplot() +
+  aes(
+    x = what_is_your_favorite_core_class,
+    color = what_is_your_favorite_core_class,
+    fill = what_is_your_favorite_core_class
+  ) +
+  geom_bar() +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  scale_color_brewer(type = "qual", palette = 7) +
+  labs(
+    title = "KAT Stats Favorite Core Classes",
+    x = "Favorite Class",
+    y = "People",
+    color = NULL,
+    fill = NULL
+  )
 ```
 
 # 2. Make a barplot of `what_is_your_favorite_elective_class`
 
 ```{r}
-
+df |>
+  ggplot() +
+  aes(
+    x = what_is_your_favorite_elective_class,
+    color = what_is_your_favorite_elective_class,
+    fill = what_is_your_favorite_elective_class
+  ) +
+  geom_bar() +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  scale_color_brewer(type = "qual", palette = 7) +
+  coord_flip() +
+  labs(
+    title = "KAT Stats Favorite Elective Classes",
+    x = "Favorite Elective",
+    y = "People",
+    color = NULL,
+    fill = NULL
+  )
 ```
 
 # 3. Make a stacked barplot of `what_is_your_favorite_core_class` and `what_is_your_favorite_elective_class`
 
 ```{r}
-
+df |>
+  ggplot() +
+  aes(
+    x = what_is_your_favorite_core_class,
+    color = what_is_your_favorite_elective_class,
+    fill = what_is_your_favorite_elective_class
+  ) +
+  geom_bar() +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  scale_color_brewer(type = "qual", palette = 7) +
+  labs(
+    title = "KAT Stats Favorite Core Classes",
+    x = "Favorite Class",
+    y = "People",
+    color = NULL,
+    fill = NULL
+  )
 ```
 
 # 4. Make a side by side barplot of `what_is_your_favorite_core_class` and `what_is_your_favorite_elective_class`
+
+```{r}
+df |>
+  ggplot() +
+  aes(
+    x = what_is_your_favorite_core_class,
+    color = what_is_your_favorite_elective_class,
+    fill = what_is_your_favorite_elective_class
+  ) +
+  geom_bar(position = "dodge") +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  scale_color_brewer(type = "qual", palette = 7) +
+  labs(
+    title = "KAT Stats Favorite Elective Classes",
+    x = "Favorite Elective",
+    y = "People",
+    color = NULL,
+    fill = NULL
+  )
+```
